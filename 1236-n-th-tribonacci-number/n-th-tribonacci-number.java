@@ -1,21 +1,77 @@
-class Solution {
+/*class Solution {
     public int tribonacci(int n) {
-        if (n ==0 ){
+        ArrayList<Integer> dp = new ArrayList<>();
+
+        for(int i=0; i<=n; i++){
+            dp.add(-1);
+        }
+
+        return solve(n,dp);
+    }
+
+    private int solve (int n, ArrayList<Integer>dp){
+        if( n==0 ) {
             return 0;
-        } 
+        }
 
         if(n==1 || n==2){
             return 1;
         }
 
-        int[] Tri = new int[n+1];
-        Tri[0]=0;
-        Tri[1]=1;
-        Tri[2]=1;
-
-        for(int i=3; i<n+1; i++){
-            Tri[i] = Tri[i-1] + Tri[i-2] + Tri[i-3];
+        if(dp.get(n) != -1){
+            return dp.get(n);
         }
-        return Tri[n];
+
+        dp.set(n, solve(n-1, dp) + solve(n-2, dp) + solve(n-3, dp));
+        return dp.get(n);
     }
 }
+*/
+class Solution{
+    public int tribonacci(int n){
+        
+        ArrayList<Integer> dp = new ArrayList<>();
+        if(n==0){
+            return 0;
+        }
+
+        if(n==1 || n==2){
+            return 1;
+        }
+
+        for( int i =0; i<=n ; i++){
+            dp.add(0);
+        }
+        dp.set(0,0);
+        dp.set(1,1);
+        dp.set(2,1);
+
+        
+        for(int i=3; i<=n ; i++){
+            dp.set(i, dp.get(i-1) + dp.get(i-2) + dp.get(i-3));
+        }
+        return dp.get(n);
+    }
+}
+
+
+/*class Solution{
+    public int fib(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        ArrayList<Integer> dp = new ArrayList<>();
+
+        for (int i = 0; i <= n; i++) {
+            dp.add(0);
+        }
+
+    dp.set(0 ,0);
+    dp.set(1, 1);
+
+    for(int i=2; i<=n; i++){
+        dp.set(i, dp.get(i-1) + dp.get(i-2));
+    }
+    return dp.get(n);
+}
+}*/
