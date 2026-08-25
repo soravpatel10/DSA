@@ -21,6 +21,9 @@
         return dp.get(n);
     }
 }*/
+
+
+//dp
 class Solution{
     public int fib(int n) {
         if (n <= 1) {
@@ -41,3 +44,25 @@ class Solution{
     return dp.get(n);
 }
 }
+
+/*
+class Solution{
+    public int fib(int n){
+        int ans = findfib(n);
+        return ans;
+    }
+
+    public int findfib(int n){
+
+        if(n==0 || n==1){
+            return n;
+        }
+
+        int num1= findfib(n-1);
+        int num2 =findfib(n-2);
+
+        int num = num1 + num2;
+        return num;
+    }
+}
+*/
