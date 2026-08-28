@@ -78,25 +78,43 @@ class Solution{
 
 
 //Memoization
+// class Solution {
+//     public int fib(int n){
+//         ArrayList<Integer> dp = new ArrayList<>();
+
+//         for(int i=0; i<=n; i++){
+//             dp.add(-1);
+//         }
+
+//         return solve(n , dp);
+//     }
+
+//     public int solve(int n, ArrayList<Integer> dp){
+//         if(n<=1) {
+//             return n;
+//         }
+//         if(dp.get(n) != -1) {
+//             return dp.get(n);
+//         }
+//         dp.set(n, solve(n-1, dp) + solve(n-2, dp));
+//         return dp.get(n);
+//     }
+// }
+
+//Tabulation
 class Solution {
     public int fib(int n){
         ArrayList<Integer> dp = new ArrayList<>();
-
-        for(int i=0; i<=n; i++){
-            dp.add(-1);
+        if (n <= 1) return n;
+        for (int i = 0; i <= n; i++) {
+            dp.add(0);
+        }
+        dp.set(0, 0);
+        dp.set(1, 1);
+        for(int i=2; i<=n; i++){
+            dp.set(i, dp.get(i-1)+ dp.get(i-2));
         }
 
-        return solve(n , dp);
-    }
-
-    public int solve(int n, ArrayList<Integer> dp){
-        if(n<=1) {
-            return n;
-        }
-        if(dp.get(n) != -1) {
-            return dp.get(n);
-        }
-        dp.set(n, solve(n-1, dp) + solve(n-2, dp));
         return dp.get(n);
     }
 }
