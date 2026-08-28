@@ -24,26 +24,26 @@
 
 
 //dp
-class Solution{
-    public int fib(int n) {
-        if (n <= 1) {
-            return n;
-        }
-        ArrayList<Integer> dp = new ArrayList<>();
+// class Solution{
+//     public int fib(int n) {
+//         if (n <= 1) {
+//             return n;
+//         }
+//         ArrayList<Integer> dp = new ArrayList<>();
 
-        for (int i = 0; i <= n; i++) {
-            dp.add(0);
-        }
+//         for (int i = 0; i <= n; i++) {
+//             dp.add(0);
+//         }
 
-    dp.set(0 ,0);
-    dp.set(1, 1);
+//     dp.set(0 ,0);
+//     dp.set(1, 1);
 
-    for(int i=2; i<=n; i++){
-        dp.set(i, dp.get(i-1) + dp.get(i-2));
-    }
-    return dp.get(n);
-}
-}
+//     for(int i=2; i<=n; i++){
+//         dp.set(i, dp.get(i-1) + dp.get(i-2));
+//     }
+//     return dp.get(n);
+// }
+// }
 
 /*
 class Solution{
@@ -66,4 +66,12 @@ class Solution{
     }
 }
 */
-//dp tabulation
+//dp memo
+class Solution {
+    public int fib(int n){
+        if(n<=1){
+            return n;
+        }
+        return fib(n-1)+fib(n-2);
+    }
+}
