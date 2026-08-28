@@ -66,12 +66,37 @@ class Solution{
     }
 }
 */
-//dp memo
+//recursion
+// class Solution {
+//     public int fib(int n){
+//         if(n<=1){
+//             return n;
+//         }
+//         return fib(n-1)+fib(n-2);
+//     }
+// }
+
+
+//Memoization
 class Solution {
     public int fib(int n){
-        if(n<=1){
+        ArrayList<Integer> dp = new ArrayList<>();
+
+        for(int i=0; i<=n; i++){
+            dp.add(-1);
+        }
+
+        return solve(n , dp);
+    }
+
+    public int solve(int n, ArrayList<Integer> dp){
+        if(n<=1) {
             return n;
         }
-        return fib(n-1)+fib(n-2);
+        if(dp.get(n) != -1) {
+            return dp.get(n);
+        }
+        dp.set(n, solve(n-1, dp) + solve(n-2, dp));
+        return dp.get(n);
     }
 }
