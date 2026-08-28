@@ -102,19 +102,36 @@ class Solution{
 // }
 
 //Tabulation
-class Solution {
-    public int fib(int n){
-        ArrayList<Integer> dp = new ArrayList<>();
-        if (n <= 1) return n;
-        for (int i = 0; i <= n; i++) {
-            dp.add(0);
-        }
-        dp.set(0, 0);
-        dp.set(1, 1);
-        for(int i=2; i<=n; i++){
-            dp.set(i, dp.get(i-1)+ dp.get(i-2));
-        }
+// class Solution {
+//     public int fib(int n){
+//         ArrayList<Integer> dp = new ArrayList<>();
+//         if (n <= 1) return n;
+//         for (int i = 0; i <= n; i++) {
+//             dp.add(0);
+//         }
+//         dp.set(0, 0);
+//         dp.set(1, 1);
+//         for(int i=2; i<=n; i++){
+//             dp.set(i, dp.get(i-1)+ dp.get(i-2));
+//         }
 
-        return dp.get(n);
+//         return dp.get(n);
+//     }
+// }
+
+//Space Optimization
+class Solution{
+    public int fib(int n){
+        if(n<=1) return n;
+        int prev2 = 0;
+        int prev =1 ;
+
+        for(int i=2; i<=n; i++){
+            int curr = prev + prev2;
+
+            prev2 = prev;
+            prev = curr;
+        }
+        return prev;
     }
 }
