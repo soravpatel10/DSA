@@ -6,12 +6,10 @@
 //         }
 //         return solve(n, dp);
 //     }
-
 //     private int solve (int n, ArrayList<Integer> dp){
 //         if(n==0 || n==1){
 //             return 1;
 //         }
-
 //         if(dp.get(n) != -1){
 //             return dp.get(n);
 //         }
@@ -20,24 +18,21 @@
 //     }
 // }
 
-class Solution {
-    public int climbStairs(int n) {
+//Tabulation
+class Solution{
+    public int climbStairs(int n){
         ArrayList<Integer> dp = new ArrayList<>();
-        for(int i=0; i<=n ; i++){
-            dp.add(-1);
+
+        for(int i=0; i<=n; i++){
+            dp.add(0);
         }
 
-        return solve(n, dp);
-    }
+        dp.set(0,1);
+        dp.set(1,1);
 
-    public int solve (int n, ArrayList<Integer> dp){
-        if(n<=1) return 1;
-        if(dp.get(n) != -1){
-            return dp.get(n);
+        for(int i=2; i<=n ; i++){
+            dp.set(i, dp.get(i-1) + dp.get(i-2));
         }
-
-        dp.set(n, solve(n-1 , dp) + solve(n-2, dp));
         return dp.get(n);
     }
 }
-
