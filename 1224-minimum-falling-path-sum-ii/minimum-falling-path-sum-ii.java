@@ -2,7 +2,7 @@
 //     public int minFallingPathSum(int[][] grid) {
 //         int n = grid.length;
 //         int ans  = Integer.MAX_VALUE;
-
+//
 //         for(int col=0; col<n ; col++){
 //             ans = Math.min(ans, solve(0, col, grid));
 //         }
